@@ -18,7 +18,8 @@ We're going to be writing a shell script.  First, though... let's figure out wha
 What command did you use, and what was its output?
 ----------
 
-
+Laurens-Air:~ lauren$ date
+Fri Sep 21 12:21:59 EDT 2018
 
 ==========
 2. Print out a calendar for this month.
@@ -26,7 +27,15 @@ What command did you use, and what was its output?
 What command did you use, and what was its output?
 ----------
 
-
+Laurens-Air:~ lauren$ cal
+   September 2018     
+Su Mo Tu We Th Fr Sa  
+                   1  
+ 2  3  4  5  6  7  8  
+ 9 10 11 12 13 14 15  
+16 17 18 19 20 21 22  
+23 24 25 26 27 28 29  
+30           
 
 ==========
 3. Go to your home directory.  Verify that you're in your home directory.
@@ -34,7 +43,8 @@ What command did you use, and what was its output?
 What commands did you use to do this?
 ----------
 
-
+cd ~
+pwd
 
 ==========
 4. Create an empty file called copy_to_backup.sh.  Verify that the file exists.
@@ -42,7 +52,8 @@ What commands did you use to do this?
 What commands did you use to do this?
 ----------
 
-
+touch copy_to_backup.sh
+ls
 
 ==========
 5. What are the permissions on your copy_to_backup.sh.
@@ -50,7 +61,11 @@ What commands did you use to do this?
 What command did you use to find the permissions?
 ----------
 
+owner - write and read
+group - read
+world - read
 
+ls -l
 
 ==========
 6. Change the permissions so that this file is executable by the user.  Verify the new permissions.
@@ -58,7 +73,22 @@ What command did you use to find the permissions?
 What commands did you use to do this?  What was the output?
 ----------
 
-
+Laurens-Air:~ lauren$ chmod +x copy_to_backup.sh 
+Laurens-Air:~ lauren$ ls -l
+total 2400
+drwx------@  3 lauren  staff      96 Aug 31 19:16 Applications
+drwx------+  4 lauren  staff     128 Sep 20 08:01 Desktop
+drwx------+  9 lauren  staff     288 Sep 20 09:13 Documents
+drwx------+ 54 lauren  staff    1728 Sep 20 00:04 Downloads
+drwx------@ 62 lauren  staff    1984 Sep  4 12:52 Library
+drwx------+  3 lauren  staff      96 Aug 31 19:09 Movies
+drwx------+  3 lauren  staff      96 Aug 31 19:09 Music
+drwx------+  4 lauren  staff     128 Sep 17 20:24 Pictures
+drwxr-xr-x+  4 lauren  staff     128 Aug 31 19:09 Public
+-rwxr--r--   1 lauren  staff       0 Sep 21 12:23 copy_to_backup.sh
+drwxr-xr-x   7 lauren  staff     224 Sep 21 11:52 mtec1003-lab-03
+-rw-r--r--   1 lauren  staff  920373 Sep 21 11:34 mtec1003-lab-03.tar.gz
+-rw-r--r--   1 lauren  staff  305864 Sep 21 12:16 pg1232.txt
 
 ==========
 7. Try executing the file!
@@ -68,7 +98,8 @@ $ ./copy_to_backup.sh
 What command did you use to try to execute the file?  What happens?
 ----------
 
-
+./copy_to_backup.sh
+Nothing happens
 
 ==========
 8. Open the file with nano
@@ -76,7 +107,7 @@ What command did you use to try to execute the file?  What happens?
 What command did you use to do this?
 ----------
 
-
+nano copy_to_backup.sh
 
 ==========
 9. In your file, write the commands to do the following
@@ -90,13 +121,16 @@ Don't forget the first line of your shell script! It should begin with #!/bin/ba
 Write out the code in your file below...
 ----------
 
-
+#!/bin/bash
+mkdir backup
+cp * Users/lauren/backup
+echo "I'm done backing up"
 
 ==========
 10. Create a directory in your home called test
 ----------
 
-
+mkdir test
 
 ==========
 11. Go into that directory and create two empty files... 1.txt and 2.txt
@@ -104,7 +138,8 @@ Write out the code in your file below...
 What commands did you use to do this?
 ----------
 
-
+cd test
+touch 1.txt 2.txt
 
 ==========
 12. Move the script that you created into this directory.
@@ -112,7 +147,16 @@ What commands did you use to do this?
 What commands did you use to do this?
 ----------
 
-
+Laurens-Air:~ lauren$ mv ~/copy_to_backup.sh ~/test
+Laurens-Air:~ lauren$ ls
+Applications		Movies			mtec1003-lab-03.tar.gz
+Desktop			Music			pg1232.txt
+Documents		Pictures		test
+Downloads		Public
+Library			mtec1003-lab-03
+Laurens-Air:~ lauren$ cd test
+Laurens-Air:test lauren$ ls
+1.txt			2.txt			copy_to_backup.sh
 
 ==========
 13. Run your script.
@@ -120,7 +164,7 @@ What commands did you use to do this?
 What commands did you use to do this?
 ----------
 
-
+./copy_to_backup.sh
 
 ==========
 14. Verify that a backup folder was created in your test directory... with copies of the files present.
